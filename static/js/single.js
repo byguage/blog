@@ -162,5 +162,5 @@ ks.image(".post-content:not(.is-special) img, .page-content:not(.is-special) img
 
 // 请保留版权说明
 if (window.console && window.console.log) {
-    console.log("%c Single %c https://paugram.com ","color: #fff; margin: 1em 0; padding: 5px 0; background: #ffa628;","margin: 1em 0; padding: 5px 0; background: #efefef;");
+    console.log("%c Single %c https://byguage.top ","color: #fff; margin: 1em 0; padding: 5px 0; background: #ffa628;","margin: 1em 0; padding: 5px 0; background: #efefef;");
 }
