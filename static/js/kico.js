@@ -410,5 +410,5 @@ Array.prototype.remove = function (value) {
 
     global.ks = KStyle;
 
-    console.log("%c Kico Style %c https://paugram.com ","color: #fff; margin: 1em 0; padding: 5px 0; background: #3498db;","margin: 1em 0; padding: 5px 0; background: #efefef;");
+    console.log("%c Kico Style %c https://byguage.top ","color: #fff; margin: 1em 0; padding: 5px 0; background: #3498db;","margin: 1em 0; padding: 5px 0; background: #efefef;");
 })(window);
