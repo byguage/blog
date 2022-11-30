@@ -243,17 +243,34 @@ newStreamTracks.forEach(item =&gt; {
                 <p>特立独行的一只前端菜狗。本站未注明转载的文章均为原创，并采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">CC BY-NC-SA 4.0</a> 授权协议，<span style="color: #E91E63">转载请注明来源</span>，谢谢！如本站内容对你有所帮助的话，不妨 <a href="https://paul.ren/donate">捐助支持</a> 一下？同时欢迎订阅关注 <a href="https://paul.ren/note" target="_blank">我的日记</a>，唠嗑（分享）每日的折腾经历。</p>
             </div>
         </section>
-        <section class="sub-footer">
-            <p>© 2022 <a href="https://paugram.com/">保罗的小宇宙</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Single" target="_blank" rel="nofollow">Single</a>.</p>
-        </section>
-    </div>
+<div class="buttons">
+<a class="to-top" href="#"></a>
+</div>
+<section class="sub-footer">
+<script type="d9292c83c1d0cb5593b193ff-text/javascript">
+    window.onload = function() {
+        setInterval(function() {
+            var nowTime = new Date();//获取当前时间
+            //创建日期对象
+            var endTime = new Date("2022-7-1 00:00:00");
+            var seconds = parseInt((endTime.getTime() - nowTime.getTime()) / 1000);//两个时间点的时间差(秒)
+            var d = parseInt(seconds / 3600 / 24);//得到天数
+            var h = parseInt(seconds / 3600 % 24);//小时
+            var m = parseInt(seconds / 60 % 60);//分钟
+            var s = parseInt(seconds % 60);//秒
+            document.getElementById("djs").innerHTML = "此站已经运行" + d +"天" + h + "小时" + m + "分钟" + s + "秒";
+        }, 1000);
+    }
+</script><div id="djs"></div>
+<p>© 2022 <a href="https://byguage.top/">夜莺</a>. All Rights Reserved. Theme By <a href="https://byguage.top" target="_blank" rel="nofollow">yeying</a>.</p>
+</section>
+</div>
 </footer>
-
-<script src="https://paugram.com/usr/themes/single/static/kico.js"></script>
-<script src="https://paugram.com/usr/themes/single/static/single.js"></script>
-<script src="https://paugram.com/usr/themes/single/static/prism.js"></script>
-<script>var single = new Paul_Single({copyright: true, night: true});</script>
-<script>
+<script src="static/js/kico.js" type="d9292c83c1d0cb5593b193ff-text/javascript"></script>
+<script src="static/js/single.js" type="d9292c83c1d0cb5593b193ff-text/javascript"></script>
+<script src="static/js/prism.js" type="d9292c83c1d0cb5593b193ff-text/javascript"></script>
+<script type="d9292c83c1d0cb5593b193ff-text/javascript">var single = new Paul_Single({copyright: true, night: true});</script>
+<script type="d9292c83c1d0cb5593b193ff-text/javascript">
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -262,15 +279,14 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<script defer>
+<script defer type="d9292c83c1d0cb5593b193ff-text/javascript">
   setTimeout(() => {
-    fetch("https://paul.ren/api/note/?size=1").then(res => res.json()).then(res => {
-      pio.message(`保罗最近写了日记：<a href="https://paul.ren/note">${res.data[0].title}</a>，快前往阅读吧！`, { time: 10000, html: true });
+    fetch("https://byguage.top").then(res => res.json()).then(res => {
+      pio.message(`夜莺最近写了日记：<a href="https://byguage.top">${res.data[0].title}</a>，快前往阅读吧！`, { time: 10000, html: true });
     })
   }, 5000);
-</script><div class="pio-container left"><div class="pio-action"></div><canvas id="pio" width="160" height="250"></canvas></div><script src='https://paugram.com/usr/plugins/Pio/static/l2d.js'></script>
-<script src='https://paugram.com/usr/plugins/Pio/static/pio.js'></script>
-<script>var pio = new Paul_Pio({"mode":"fixed","hidden":true,"content":{"welcome":["欢迎来到保罗的小宇宙！","今天天气不错，一起来玩吧！","博主每天都有些折腾记录，欢迎前往他的小窝阅读~"],"link":"https://paul.ren/about","custom":[{"selector":".comment-form","text":"欢迎参与本文评论，别发小广告噢~"},{"selector":".home-social a:last-child","text":"在这里可以了解博主的日常噢~"},{"selector":".post-item a","type":"read"},{"selector":".post-content a, .page-content a","type":"link"}]},"night":"single.night()","model":["https://paugram.com/usr/plugins/Pio/models/416/model.json"]});</script><script src='https://paugram.com/usr/plugins/SQP/SQPlayer.js'></script>
-
-</body>
+</script><div class="pio-container left"><div class="pio-action"></div><canvas id="pio" width="160" height="250"></canvas></div><script src='//qq.byguage.top/static/js/l2d.js' type="d9292c83c1d0cb5593b193ff-text/javascript"></script>
+<script src='//qq.byguage.top/static/js/pio.js' type="d9292c83c1d0cb5593b193ff-text/javascript"></script>
+<script type="d9292c83c1d0cb5593b193ff-text/javascript">var pio = new Paul_Pio({"mode":"fixed","hidden":true,"content":{"welcome":["欢迎来到夜莺的主页","今天天气不错，一起来玩吧！","博主每天都有些折腾记录，欢迎前往他的小窝阅读~"],"link":"null","custom":[{"selector":".comment-form","text":"欢迎参与本文评论，别发小广告噢~"},{"selector":".home-social a:last-child","text":"在这里可以了解博主的日常噢~"},{"selector":".post-item a","type":"read"},{"selector":".post-content a, .page-content a","type":"link"}]},"model":["//qq.byguage.top/static/json/model.json"]});</script>
+ </body>
 </html>
