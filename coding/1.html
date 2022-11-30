@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>记浏览器获取麦克风音源，断开后依旧占用显示小红点的 Bug - 夜莺的博客</title>
+    <link rel="icon" href="https://paugram.com/usr/themes/single/img/icon.png" sizes="192x192"/>
+    <link href="https://paugram.com/usr/themes/single/static/kico.css" rel="stylesheet" type="text/css"/>
+    <link href="https://paugram.com/usr/themes/single/static/single.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fastly.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <style>body:before{content: ''; background-image: url(//api.paugram.com/wallpaper?source=gt)}</style>
+    <style>body::before{ mix-blend-mode: multiply }
+.dark-theme::before{ opacity: .4 }
+.pio-container, sqp{ transition: filter .3s }
+.dark-theme .pio-container, .dark-theme sqp{ filter: brightness(60%); -webkit-filter: brightness(60%); }</style>
+    <meta property="og:site_name" content="夜莺的博客">
+    <meta property="og:title" content="记浏览器获取麦克风音源，断开后依旧占用显示小红点的 Bug"/>
+<meta name="description" content="公司的项目使用了声网 SDK 实现语音通话，但在其他同事接入了另外一个功能后，被发现断开麦克风结束通话后，浏览器窗口上显示“小红点”，依旧占用麦克风的情况。这很容易导致客户认为我们在继续“监听”..." />
+
+(function () {
+    window.TypechoComment = {
+        dom : function (id) {
+            return document.getElementById(id);
+        },
+    
+        create : function (tag, attr) {
+            var el = document.createElement(tag);
+        
+            for (var key in attr) {
+                el.setAttribute(key, attr[key]);
+            }
+        
+            return el;
+        },
+
+        reply : function (cid, coid) {
+            var comment = this.dom(cid), parent = comment.parentNode,
+                response = this.dom('respond-post-255'), input = this.dom('comment-parent'),
+                form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                textarea = response.getElementsByTagName('textarea')[0];
+
+            if (null == input) {
+                input = this.create('input', {
+                    'type' : 'hidden',
+                    'name' : 'parent',
+                    'id'   : 'comment-parent'
+                });
+
+                form.appendChild(input);
+            }
+
+            input.setAttribute('value', coid);
+
+            if (null == this.dom('comment-form-place-holder')) {
+                var holder = this.create('div', {
+                    'id' : 'comment-form-place-holder'
+                });
+
+                response.parentNode.insertBefore(holder, response);
+            }
+
+            comment.appendChild(response);
+            this.dom('cancel-comment-reply-link').style.display = '';
+
+            if (null != textarea && 'text' == textarea.name) {
+                textarea.focus();
+            }
+
+            return false;
+        },
+
+        cancelReply : function () {
+            var response = this.dom('respond-post-255'),
+            holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+
+            if (null != input) {
+                input.parentNode.removeChild(input);
+            }
+
+            if (null == holder) {
+                return true;
+            }
+
+            this.dom('cancel-comment-reply-link').style.display = 'none';
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();
+</script>
+<script type="text/javascript">
+(function () {
+    var event = document.addEventListener ? {
+        add: 'addEventListener',
+        triggers: ['scroll', 'mousemove', 'keyup', 'touchstart'],
+        load: 'DOMContentLoaded'
+    } : {
+        add: 'attachEvent',
+        triggers: ['onfocus', 'onmousemove', 'onkeyup', 'ontouchstart'],
+        load: 'onload'
+    }, added = false;
+
+    document[event.add](event.load, function () {
+        var r = document.getElementById('respond-post-255'),
+            input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = '_';
+        input.value = (function () {
+    var _x2dCL = //'Q'
+'3ee'+'abe'//'41'
++//'dO3'
+'b72'+'a'//'uaB'
++'5'//'pw'
++//'ERn'
+'789'+'N'//'N'
++//'m'
+'e'+//'to'
+'e9'+//'fM'
+'0'+//'O2t'
+'b5'+'8'//'xX2'
++'1'//'A'
++//'FWi'
+'a51'+''///*'l'*/'l'
++/* 'Cr'//'Cr' */''+'X'//'X'
++//'yZk'
+'19'+//'cg'
+'ee4'+'My'//'My'
++'f8'//'UE'
+, _z9DPk = [[14,15],[25,26],[30,32]];
+    
+    for (var i = 0; i < _z9DPk.length; i ++) {
+        _x2dCL = _x2dCL.substring(0, _z9DPk[i][0]) + _x2dCL.substring(_z9DPk[i][1]);
+    }
+
+    return _x2dCL;
+})();
+
+        if (null != r) {
+            var forms = r.getElementsByTagName('form');
+            if (forms.length > 0) {
+                function append() {
+                    if (!added) {
+                        forms[0].appendChild(input);
+                        added = true;
+                    }
+                }
+            
+                for (var i = 0; i < event.triggers.length; i ++) {
+                    var trigger = event.triggers[i];
+                    document[event.add](trigger, append);
+                    window[event.add](trigger, append);
+                }
+            }
+        }
+    });
+})();
+</script><link href='https://paugram.com/usr/plugins/Pio/static/pio.css' rel='stylesheet' type='text/css'/>
+<link href="https://paugram.com/usr/plugins/SQP/SQPlayer.css" rel="stylesheet" type="text/css"/></head>
+<body>
+<header>
+    <div class="head-title">
+        <h4>夜莺的博客</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="https://paugram.com/">首页</a>
+        <div class="has-child">
+            <a href="javascript:void(0)">分类</a>
+            <div class="sub-menu">
+                <a href="https://paugram.com/essay">随笔与杂谈</a><a href="https://paugram.com/tech">做个技术宅</a><a href="https://paugram.com/coding">进击的码农</a><a href="https://paugram.com/design">设计新视界</a><a href="https://paugram.com/share">有趣的分享</a>            </div>
+        </div>
+        <a href="https://paugram.com/about">关于我</a><a href="https://paugram.com/friends">朋友们</a>    </nav>
+</header>
+
+<main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>记浏览器获取麦克风音源，断开后依旧占用显示小红点的 Bug</h2>
+            <div class="post-meta">
+                <time class="date">2022.09.24</time>
+                <span class="category"><a href="https://paugram.com/coding">进击的码农</a></span>
+                <span class="comments">3</span>
+                <span class="view">710</span>
+            </div>
+        </section>
+        <article class="post-content">
+            <p>公司的项目使用了声网 SDK 实现语音通话，但在其他同事接入了另外一个功能后，被发现断开麦克风结束通话后，浏览器窗口上显示“小红点”，依旧占用麦克风的情况。这很容易导致客户认为我们在继续“监听”他说话，影响使用体验。这是一个遗留很久的 Bug，一直都没有人找出具体的原因，但在今天，我终于有了新的发现！<a href="https://paul.ren/note/view/2022-266">查看日记全文</a></p><p><img src="https://paugram.com/usr/uploads/2022/09/2386465307.jpg" alt="小红点" title="小红点"></p><p>我打算使用浏览器的原生方法，实现一个获取麦克风源并使用播放器实时播放的功能，简单模拟使用麦克风并消除占用的过程。如果能在这个最小的代码示例里成功复现一样的“小红点”占用效果，就需要好好检查下对应的库是否存在产生此问题的代码了。</p><p>使用 <code>navigator.mediaDevices.getUserMedia()</code> 获取源，再使用 <code>getAudioTracks()</code> 方法成功获取到麦克风的轨道。按照公司项目的源代码，应该要把这个轨道<strong>复制到另外一个源</strong>里。</p><pre><code class="lang-javascript">const stream = await navigator.mediaDevices.getUserMedia(constraints);
+let newStream = new MediaStream();
+
+const audioTracks = stream.getAudioTracks();
+
+audioTracks.forEach(item =&gt; {
+  newStream.addTrack(item);
+});</code></pre><p>想要浏览器对应的窗口停止占用麦克风，则需要停止该轨道对麦克风声音的实时获取。使用 MediaStreamTrack 的 <code>stop()</code> 方法就可以实现，执行后我浏览器上的“小红点”确实消失了。</p><pre><code class="lang-javascript">const newStreamTracks = newStream.getTracks();
+
+newStreamTracks.forEach(item =&gt; {
+  // 只要 stop 理论上就会停止占用麦克风设备了
+  item.stop();
+});</code></pre><p>期间通过使用 MDN 查询文档，发现 MediaStreamTrack 有一个叫做 <code>clone</code> 的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/clone">方法</a>，该方法将返回复制的轨道对象，主要可见变化是更换了其 <code>id</code>。</p><p>我尝试将它应用到 <a href="https://github.com/Dreamer-Paul/Code-Snippets/blob/main/2022-09-23%20%E8%8E%B7%E5%8F%96%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%9F%B3%E9%A2%91%E6%B5%81%E5%B9%B6%E6%B8%85%E9%99%A4%E5%B0%8F%E7%BA%A2%E7%82%B9/index.html#L54">我的代码</a> 里面，之后打算停止占用，结果“小红点”确实出现了无法消失，始终占用的情况。</p><pre><code class="lang-javascript">audioTracks.forEach(item =&gt; {
+  // newStream.addTrack(item);
+  // ! 只要使用 clone 方法，就会导致 stop 轨道时，浏览器依旧显示小红点（麦克风设备使用中）
+  newStream.addTrack(item.clone());
+});</code></pre><blockquote>经过 Google 后发现，貌似存在类似的 <a href="https://github.com/twilio/twilio-video.js/issues/1811">问题</a>，属于浏览器内核的 Bug。但保罗还是比较菜，就没有就此问题继续研究了。</blockquote><p>这就已经有了不小的发现了，接下来需要排查下是否是某个第三方库执行了类似的代码所致。我们项目除了声网以外，还使用到了另外一个服务，也需要引用当前用户使用的麦克风源。</p><p>将声网 SDK 返回的麦克风源替换为其内置的方法（会返回第一个麦克风源，假设你有多个麦克风，则会触发另外一个麦克风音源不对的 Bug）后，“小红点”并没有始终显示的情况。所以基本上可以确认是声网 SDK 返回的轨道可能是 <code>clone</code> 过的，导致“小红点”始终显示，该 SDK 的源码闭源，但我也从压缩混淆的代码里找到了类似的 <code>clone</code> 方法。</p><pre><code class="lang-javascript">clone(t, r, i, n) {
+  const o = this._mediaStreamTrack.clone();
+  return new e(o, t, r, i, n)
+}</code></pre><p>上面这么多的差分测试我觉得已经足够说明问题，SDK 代码内部的具体情况，我这边就不细探了。</p><ul><li><a href="https://github.com/Dreamer-Paul/Code-Snippets/blob/main/2022-09-23%20%E8%8E%B7%E5%8F%96%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%9F%B3%E9%A2%91%E6%B5%81%E5%B9%B6%E6%B8%85%E9%99%A4%E5%B0%8F%E7%BA%A2%E7%82%B9/index.html">源码链接</a></li><li><a href="https://dreamer-paul.github.io/Code-Snippets/2022-09-23%20%E8%8E%B7%E5%8F%96%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%9F%B3%E9%A2%91%E6%B5%81%E5%B9%B6%E6%B8%85%E9%99%A4%E5%B0%8F%E7%BA%A2%E7%82%B9">预览 Demo</a></li></ul><p>知道了问题产生的原因，却没有好的解决办法。接下来可能会就此问题向声网那边提工单，看看他们那边的回复了。有一说一，第一次解决这种疑难杂症，还是挺有成就感的！</p><blockquote>以下内容于 9.27 日补充：</blockquote><p>给同事看了本文提供的最小 Demo，他那边修改了下，其实只需要将 <code>clone()</code> 前后的所有 MediaStreamTrack 都 <code>stop()</code> 掉即可完成释放了。也就是说 <code>clone()</code> 之后就完全新增了一个占用项，只要有一个没有释放，就会存在“小红点”的占用效果。</p><pre><code class="lang-javascript">const newStreamTracks = newStream.getTracks();
+
+// 原流所有轨道
+audioTracks.forEach(item =&gt; {
+  item.stop();
+});
+// 新流的所有轨道
+newStreamTracks.forEach(item =&gt; {
+  // 只要 stop 理论上就会停止占用麦克风设备了
+  item.stop();
+});</code></pre><p>那问题就变成了两种可能性，一个是 React Hooks 编写逻辑问题，导致反复获取到新的 <code>clone()</code> 后的轨道。再一个就是“那另外一个服务”是否是将传入的轨道持续占用，而没有提供对应的销毁代码？这个问题还需要写一个最小复现，从而排除下是第三方的问题还是 Hooks 逻辑的问题。</p>        </article>
+        <section class="post-near">
+            <ul>
+                <li>上一篇: <a href="https://paugram.com/coding/tech-interview-2022-2.html" title="记一次技术面试（2022-2）">记一次技术面试（2022-2）</a></li>
+                <li>下一篇: 看完啦 (つд⊂)</li>
+            </ul>
+        </section>
+        <section class="post-author">
+            <figure class="author-avatar">
+                <img src="https://cravatar.cn/avatar/d22eb460ecab37fcd7205e6a3c55c228?s=200&amp;r=X" alt="Paul" width="200" height="200" />            </figure>
+            <div class="author-info">
+                <h4>Paul</h4>
+                <p>特立独行的一只前端菜狗。本站未注明转载的文章均为原创，并采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">CC BY-NC-SA 4.0</a> 授权协议，<span style="color: #E91E63">转载请注明来源</span>，谢谢！如本站内容对你有所帮助的话，不妨 <a href="https://paul.ren/donate">捐助支持</a> 一下？同时欢迎订阅关注 <a href="https://paul.ren/note" target="_blank">我的日记</a>，唠嗑（分享）每日的折腾经历。</p>
+            </div>
+        </section>
+        
+        <section class="sub-footer">
+            <p>© 2022 <a href="https://paugram.com/">保罗的小宇宙</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Single" target="_blank" rel="nofollow">Single</a>.</p>
+        </section>
+    </div>
+</footer>
+
+<script src="https://paugram.com/usr/themes/single/static/kico.js"></script>
+<script src="https://paugram.com/usr/themes/single/static/single.js"></script>
+<script src="https://paugram.com/usr/themes/single/static/prism.js"></script>
+<script>var single = new Paul_Single({copyright: true, night: true});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4f910de46766824edd97c9df2fc244c5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script defer>
+  setTimeout(() => {
+    fetch("https://blog.byguage.top").then(res => res.json()).then(res => {
+      pio.message(`夜莺最近写了日记：<a href="https://blog.byguage.top">${res.data[0].title}</a>，快前往阅读吧！`, { time: 10000, html: true });
+    })
+  }, 5000);
+</script><div class="pio-container left"><div class="pio-action"></div><canvas id="pio" width="160" height="250"></canvas></div><script src='https://paugram.com/usr/plugins/Pio/static/l2d.js'></script>
+<script src='https://paugram.com/usr/plugins/Pio/static/pio.js'></script>
+<script>var pio = new Paul_Pio({"mode":"fixed","hidden":true,"content":{"welcome":["欢迎来到保罗的小宇宙！","今天天气不错，一起来玩吧！","博主每天都有些折腾记录，欢迎前往他的小窝阅读~"],"link":"https://paul.ren/about","custom":[{"selector":".comment-form","text":"欢迎参与本文评论，别发小广告噢~"},{"selector":".home-social a:last-child","text":"在这里可以了解博主的日常噢~"},{"selector":".post-item a","type":"read"},{"selector":".post-content a, .page-content a","type":"link"}]},"night":"single.night()","model":["https://paugram.com/usr/plugins/Pio/models/416/model.json"]});</script><script src='https://paugram.com/usr/plugins/SQP/SQPlayer.js'></script>
+</body>
+</html>
