@@ -187,14 +187,13 @@
         <section class="post-title">
             <h2>记浏览器获取麦克风音源，断开后依旧占用显示小红点的 Bug</h2>
             <div class="post-meta">
-                <time class="date">2022.09.24</time>
-                <span class="category"><a href="https://paugram.com/coding">进击的码农</a></span>
-                <span class="comments">3</span>
-                <span class="view">1128</span>
+                <time class="date">2022.10.17</time>
+                <span class="category"><a href="https://byguage.top/">夜莺</a></span>
+                <span class="comments"><a href="https://jq.qq.com/?_wv=1027&k=BE3n6Agz">135966595</span>
             </div>
         </section>
         <article class="post-content">
-            <p>公司的项目使用了声网 SDK 实现语音通话，但在其他同事接入了另外一个功能后，被发现断开麦克风结束通话后，浏览器窗口上显示“小红点”，依旧占用麦克风的情况。这很容易导致客户认为我们在继续“监听”他说话，影响使用体验。这是一个遗留很久的 Bug，一直都没有人找出具体的原因，但在今天，我终于有了新的发现！<a href="https://paul.ren/note/view/2022-266">查看日记全文</a></p><p><img src="https://paugram.com/usr/uploads/2022/09/2386465307.jpg" alt="小红点" title="小红点"></p><p>我打算使用浏览器的原生方法，实现一个获取麦克风源并使用播放器实时播放的功能，简单模拟使用麦克风并消除占用的过程。如果能在这个最小的代码示例里成功复现一样的“小红点”占用效果，就需要好好检查下对应的库是否存在产生此问题的代码了。</p><p>使用 <code>navigator.mediaDevices.getUserMedia()</code> 获取源，再使用 <code>getAudioTracks()</code> 方法成功获取到麦克风的轨道。按照公司项目的源代码，应该要把这个轨道<strong>复制到另外一个源</strong>里。</p><pre><code class="lang-javascript">const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            <p>公司的项目使用了声网 SDK 实现语音通话，但在其他同事接入了另外一个功能后，被发现断开麦克风结束通话后，浏览器窗口上显示“小红点”，依旧占用麦克风的情况。这很容易导致客户认为我们在继续“监听”他说话，影响使用体验。这是一个遗留很久的 Bug，一直都没有人找出具体的原因，但在今天，我终于有了新的发现！</p><p><img src="https://paugram.com/usr/uploads/2022/09/2386465307.jpg" alt="小红点" title="小红点"></p><p>我打算使用浏览器的原生方法，实现一个获取麦克风源并使用播放器实时播放的功能，简单模拟使用麦克风并消除占用的过程。如果能在这个最小的代码示例里成功复现一样的“小红点”占用效果，就需要好好检查下对应的库是否存在产生此问题的代码了。</p><p>使用 <code>navigator.mediaDevices.getUserMedia()</code> 获取源，再使用 <code>getAudioTracks()</code> 方法成功获取到麦克风的轨道。按照公司项目的源代码，应该要把这个轨道<strong>复制到另外一个源</strong>里。</p><pre><code class="lang-javascript">const stream = await navigator.mediaDevices.getUserMedia(constraints);
 let newStream = new MediaStream();
 
 const audioTracks = stream.getAudioTracks();
