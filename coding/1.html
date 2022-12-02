@@ -190,9 +190,8 @@
             <h2>记浏览器获取麦克风音源，断开后依旧占用显示小红点的 Bug</h2>
             <div class="post-meta">
                 <time class="date">2022.10.14</time>
-                <span class="category"><a href="https://paugram.com/coding">进击的码农</a></span>
-                <span class="comments">3</span>
-                <span class="view">1303</span>
+                <span class="category"><a href="https://byguage.top/">夜莺</a></span>
+                <span class="comments"><a href="https://jq.qq.com/?_wv=1027&k=BE3n6Agz">135966595</span>
             </div>
         </section>
         <article class="post-content">
@@ -249,6 +248,21 @@ newStreamTracks.forEach(item =&gt; {
     </div>
     <div class="wrap min">
         <section class="sub-footer">
+             <script>
+    window.onload = function() {
+        setInterval(function() {
+            var nowTime = new Date();//获取当前时间
+            //创建日期对象
+            var endTime = new Date("2022-7-1 00:00:00");
+            var seconds = parseInt((endTime.getTime() - nowTime.getTime()) / 1000);//两个时间点的时间差(秒)
+            var d = parseInt(seconds / 3600 / 24);//得到天数
+            var h = parseInt(seconds / 3600 % 24);//小时
+            var m = parseInt(seconds / 60 % 60);//分钟
+            var s = parseInt(seconds % 60);//秒
+            document.getElementById("djs").innerHTML = "此站已经运行" + d +"天" + h + "小时" + m + "分钟" + s + "秒";
+        }, 1000);
+    }
+</script><div id="djs"></div>
             <p>© 2022 <a href="https://byguage.top/">夜莺</a>. All Rights Reserved. Theme By <a href="https://byguage.top" target="_blank" rel="nofollow">yeying</a>.</p>
         </section>
     </div>
