@@ -195,7 +195,7 @@
             </div>
         </section>
         <article class="post-content">
-            <p>公司的项目使用了声网 SDK 实现语音通话，但在其他同事接入了另外一个功能后，被发现断开麦克风结束通话后，浏览器窗口上显示“小红点”，依旧占用麦克风的情况。这很容易导致客户认为我们在继续“监听”他说话，影响使用体验。这是一个遗留很久的 Bug，一直都没有人找出具体的原因，但在今天，我终于有了新的发现！</p><p><img src="https://paugram.com/usr/uploads/2022/09/2386465307.jpg" alt="小红点" title="小红点"></p><p>我打算使用浏览器的原生方法，实现一个获取麦克风源并使用播放器实时播放的功能，简单模拟使用麦克风并消除占用的过程。如果能在这个最小的代码示例里成功复现一样的“小红点”占用效果，就需要好好检查下对应的库是否存在产生此问题的代码了。</p><p>使用 <code>navigator.mediaDevices.getUserMedia()</code> 获取源，再使用 <code>getAudioTracks()</code> 方法成功获取到麦克风的轨道。按照公司项目的源代码，应该要把这个轨道<strong>复制到另外一个源</strong>里。</p><pre><code class="lang-javascript">const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            <p>公司的项目使用了声网 SDK 实现语音通话，但在其他同事接入了另外一个功能后，被发现断开麦克风结束通话后，浏览器窗口上显示“小红点”，依旧占用麦克风的情况。这很容易导致客户认为我们在继续“监听”他说话，影响使用体验。这是一个遗留很久的 Bug，一直都没有人找出具体的原因，但在今天，我终于有了新的发现！</p><p><img src="icon/a.png" alt="小红点" title="小红点"></p><p>我打算使用浏览器的原生方法，实现一个获取麦克风源并使用播放器实时播放的功能，简单模拟使用麦克风并消除占用的过程。如果能在这个最小的代码示例里成功复现一样的“小红点”占用效果，就需要好好检查下对应的库是否存在产生此问题的代码了。</p><p>使用 <code>navigator.mediaDevices.getUserMedia()</code> 获取源，再使用 <code>getAudioTracks()</code> 方法成功获取到麦克风的轨道。按照公司项目的源代码，应该要把这个轨道<strong>复制到另外一个源</strong>里。</p><pre><code class="lang-javascript">const stream = await navigator.mediaDevices.getUserMedia(constraints);
 let newStream = new MediaStream();
 
 const audioTracks = stream.getAudioTracks();
@@ -232,7 +232,7 @@ newStreamTracks.forEach(item =&gt; {
         </section>
         <section class="post-author">
             <figure class="author-avatar">
-                <img src="//byguage.github.io/img/icon.png" alt="夜莺" width="200" height="200" />            </figure>
+                <img src="/icon/yeying.png" alt="夜莺" width="200" height="200" />            </figure>
             <div class="author-info">
                 <h4>༺◎夜༒莺◎༻</h4>
                 <p>特立独行的一只前端程序员。本站未注明转载的文章均为原创，并采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">CC BY-NC-SA 4.0</a> 授权协议，<span style="color: #E91E63">转载请注明来源</span>，谢谢！如本站内容对你有所帮助的话，不妨 <a href="/sponsor">捐助支持</a> 一下？同时欢迎订阅关注本博客，唠嗑（分享）每日的折腾经历。</p>
