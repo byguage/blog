@@ -1,0 +1,32 @@
+{
+  "version": "Sample 1.0.0",
+  "model": "model.moc",
+  "textures": ["pio/texture_00.png"],
+  "motions": {
+    "idle": [
+      { "file": "pio/login.mtn" },
+      { "file": "pio/shake.mtn" },
+      { "file": "pio/touch_1.mtn" },
+      { "file": "pio/touch_2.mtn" },
+      { "file": "pio/touch_3.mtn" },
+      { "file": "pio/touch_4.mtn" },
+      { "file": "pio/touch_5.mtn" },
+      { "file": "pio/wait_1.mtn" },
+      { "file": "pio/wait_2.mtn" },
+      { "file": "pio/wedding.mtn" },
+      { "file": "pio/wedding_touch.mtn" }
+    ],
+    "tap_body": [{ "file": "pio/daiji_idle_01.mtn" }]
+  },
+  "physics": "physics.json",
+  "hit_areas": [
+    { "name": "head", "id": "D_REF.HEAD" },
+    { "name": "body", "id": "D_REF.BODY" }
+  ],
+  "hit_areas_custom": {
+    "head_x": [0, 0],
+    "head_y": [0, 0],
+    "body_x": [0, 0],
+    "body_y": [0, 0]
+  }
+}
